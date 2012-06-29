@@ -1,0 +1,12 @@
+{
+    "name": "ganglio/test",
+    "authors": [
+        {
+            "name": "Roberto Torella",
+            "email": "roberto.torella@gmail.com"
+        }
+    ],
+    "require": {
+
+    }
+}
