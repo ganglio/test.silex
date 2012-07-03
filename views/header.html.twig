@@ -1,6 +1,8 @@
+<h1>{{ title }}{{ pippo }}</h1>
 <nav>
 	<ul>
-		<li>Pippo</li>
-		<li>Pluto</li>
+		{% for menu_item in menu %}
+			<li><a href='{{ menu_item.href }}' title='{{ menu_item.title }}'>{{ menu_item.title }}</a></li>
+		{% endfor %}
 	</ul>
 </nav>
