@@ -10,7 +10,6 @@ $header->get("/", function() use ($app) {
 				"href"=>"#login",
 			),
 		),
-		"pippo"=>$app["pippo"],
 	));
 });
 

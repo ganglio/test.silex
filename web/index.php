@@ -11,14 +11,12 @@ $app['debug'] = true;
  * Before action
  */
 $app->before(function () use ($app) {
-	// Registering Twig
 	$app->register(new Silex\Provider\TwigServiceProvider(), array(
 		'twig.path'         => __DIR__.'/../views',
 		'twig.class_path'   => __DIR__.'/../vendor/twig/lib',
 		// 'twig.options'      => array('cache' => __DIR__ .'/cache'),
 	));
-	$app["pippo"] = 12;
-	// Registering URLGenerator
+	//$app->register(new Silex\Provider\SecurityServiceProvider());
 	$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 });
 

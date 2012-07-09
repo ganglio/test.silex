@@ -1,1 +1,14 @@
-This is a fat content
+<div class="search">O</div>
+
+<header>
+	<input type="search" value="" />
+	<div class="buttons">
+		<button class="order" data-type="title">title</button>
+		<button class="order" data-type="title">title</button>
+		<button class="order" data-type="title">title</button>
+	</div>
+</header>
+
+{% for book in books %}
+	{{ book | raw }}
+{% endfor %}
