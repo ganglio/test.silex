@@ -62,7 +62,7 @@ section {
 	padding: 20px;
 	background-color: rgba(255,0,0,0.1);
 	margin: 0 auto;
-	margin-top: 40px;
+	margin-top: 80px;
 	article {
 		width: 150px;
 		height: 200px;
@@ -70,16 +70,16 @@ section {
 		padding: 10px;
 		@include box-sizing(border-box);
 		@include background-clip(content-box);
+		float: left;
 	}
 	header {
-		background-color: rgba(0,255,0,0.1);
 		height: $menuHeight;
 		line-height: $menuHeight;
-		position: absolute;
-		top: -40px;
-		left:0;
 		width: 100%;
 		padding: 0 50px;
+		position: absolute;
+		left:0;
+		top:-40px;
 		@include transition(margin-top 0.25s linear);
 		@include box-sizing(border-box);
 		input {
@@ -88,17 +88,5 @@ section {
 		.buttons {
 			float: right;
 		}
-	}
-	.search {
-		cursor: pointer;
-		z-index:50;
-		position: absolute;
-		top:20px;
-		right: 20px;
-	}
-	.search:hover + header,
-	header:hover {
-		margin-top: 40px;
-		z-index: 75;
 	}
 }

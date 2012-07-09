@@ -3,4 +3,5 @@ $(document).ready(function(){
 		itemSelector: 'article',
 		isFitWidth: true
 	});
+	$(document).scrollTop(40);
 });
