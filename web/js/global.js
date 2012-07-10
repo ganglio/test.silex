@@ -1,7 +1,3 @@
-$(document).ready(function(){
-	$("section").masonry({
-		itemSelector: 'article',
-		isFitWidth: true
-	});
-	$(document).scrollTop(40);
-});
+$(window).load(function(){
+	$(document).scrollTop(400);
+})

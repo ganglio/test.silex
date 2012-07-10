@@ -60,9 +60,9 @@ footer {
 section {
 	@include box-sizing(padding-box);
 	padding: 20px;
-	background-color: rgba(255,0,0,0.1);
-	margin: 0 auto;
-	margin-top: 80px;
+	margin: 40px auto 0 auto;
+	position: relative;
+	text-align: justify;
 	article {
 		width: 150px;
 		height: 200px;
@@ -70,23 +70,39 @@ section {
 		padding: 10px;
 		@include box-sizing(border-box);
 		@include background-clip(content-box);
-		float: left;
+		@include transition(transform 0.1s ease-out);
+		line-height: 200px;
+		text-align: center;
+		font-size: 100px;
+		display: inline-block;
 	}
 	header {
+		background-color: rgba(0,255,0,0.1);
 		height: $menuHeight;
 		line-height: $menuHeight;
-		width: 100%;
-		padding: 0 50px;
+		width:320px;
+		padding: 0 5px;
 		position: absolute;
+		margin:0 auto;
 		left:0;
-		top:-40px;
-		@include transition(margin-top 0.25s linear);
+		top:0px;
 		@include box-sizing(border-box);
 		input {
-			display: inline-block
+			width: 130px;
+			display: inline-block;
+			border: none;
+			height: 20px;
+			line-height: 20px;
+			padding: 0;
 		}
-		.buttons {
-			float: right;
+		.order {
+			display: inline-block;
+			width: 60px;
+			text-align: center;
+			height: 20px;
+			line-height: 20px;
+			background-color: white;
+			cursor: pointer;
 		}
 	}
 }
