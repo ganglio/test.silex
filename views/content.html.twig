@@ -1,10 +1,13 @@
-<header>
-	<input type="text" value="" placeholder="search" rel="search" />
-	<a class="order up title" data-type="title">title</a>
-	<a class="order none author" data-type="title">author</a>
-	<a class="order down active date" data-type="title">date</a>
-</header>
-
+<div class="tools">
+	<span class="search">
+		<input type="text" placeholder="search" /><a href="#">S</a>
+	</span>
+	<span class="sort">
+		<a class="date" href="#">D</a>
+		<a class="title" href="#">T</a>
+		<a class="author" href="#">A</a>
+	</span>
+</div>
 {% for book in books %}
 	{{ book | raw }}
 {% endfor %}
