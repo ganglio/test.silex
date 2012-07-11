@@ -6,6 +6,7 @@
             "email": "roberto.torella@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "silex/silex": "1.0.*",
         "twig/twig": "1.8.*",
