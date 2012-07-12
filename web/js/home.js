@@ -42,10 +42,13 @@ $(function(){
 		$bookShelf.quicksand($orderedBookShelf, {
 			duration: 800,
 			easing: 'linear'
+		},function(){
+			$(".search input").keyup();
 		});
 	});
 
 	$(".search input").keyup(function(){
+		$books = $("section article");
 		var keyword = $(this).val();
 		$books.each(function(i,t){
 			var matchAuthor = (""+$(t).data("author")+"").match(keyword);
