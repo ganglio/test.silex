@@ -2,6 +2,14 @@
 	@include background-image(url(../images/noise.png),linear-gradient(top,$color1,$color2));
 }
 
+@mixin bevel($color,$inset: true) {
+	@if $inset == true {
+		@include box-shadow(inset 1px 1px 1px 0 darken($color,80%),inset -1px -1px 1px 0 darken($color,50%));
+	} @else {
+		@include box-shadow(inset 1px 1px 1px 0 darken($color,50%),inset -1px -1px 1px 0 darken($color,80%));
+	}
+}
+
 header {
 	width: 100%;
 	height: 80px;
@@ -31,14 +39,16 @@ article {
 	text-align: center;
 	line-height: 200px;
 	font-size: 100px;
-	background-color: rgba(0,0,0,0.2);
-	@include border-radius(10px);
+	background-color: rgba(0,0,0,0.3);
 	margin:10px;
 	display: inline-block;
+	@include border-radius(5px);
+	@include bevel(white);
 }
 
 .tools {
 	height:40px;
+	margin: 15px 0 10px 0;
 	span {
 		display: inline-block;
 		line-height: 40px;
@@ -70,7 +80,7 @@ article {
 			color: #c8c8c8;
 			@include box-sizing(border-box);
 			@include border-radius(3px);
-			@include box-shadow(inset 1px 1px 1px 0 darken(white,80%),inset 1px -1px 1px 0 darken(white,50%));
+			@include bevel(white);
 		}
 		a {
 			position: absolute;
@@ -107,9 +117,39 @@ article {
 			text-decoration: none;
 			border-radius: 15px;
 			font-size: 12px;
-			@include box-shadow(inset 1px 1px 1px 0 darken(white,80%),inset -1px -1px 1px 0 darken(white,50%));
+			position: relative;
+			@include bevel(white);
 			@include noise(darken(white,70%));
 			@include text-shadow(0 1px 2px darken(white,90%));
+			.tooltip {
+				width:50px;
+				height: 20px;
+				font-size: 10px;
+				color: white;
+				display: none;
+				position: absolute;
+				top: -25px;
+				left: 50%;
+				line-height: 20px;
+				margin:0 -25px;
+				@include noise(#222222,#070707);
+				@include bevel(white, false);
+				@include border-radius(2px);
+				&:before {
+					content: "";
+					width: 0;
+					height: 0;
+					border-width:5px;
+					border-style: solid;
+					border-color: #222222 transparent transparent transparent;
+					position: absolute;
+					bottom: -10px;
+					left: 20px;
+				}
+			}
+			&:hover .tooltip {
+				display: block;
+			}
 		}
 		.selected {
 			color: cyan;

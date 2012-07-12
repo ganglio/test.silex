@@ -1,5 +1,11 @@
 {% extends 'layout.html.twig' %}
 
+{% block scripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="js/jquery.quicksand.js"></script>
+	<script type="text/javascript" src="js/home.js"></script>
+{% endblock %}
+
 {% block content %}
-{{ render("/content/") }}
+{{ render("/library/") }}
 {% endblock %}

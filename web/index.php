@@ -27,7 +27,7 @@ $app->error(function (\Exception $e, $code) use ($app) {
 });
 
 $app->mount("/header", include 'controllers/header.php');
-$app->mount("/content", include 'controllers/content.php');
+$app->mount("/library", include 'controllers/library.php');
 
 // Root
 $app->get('/', function () use($app) {

@@ -1,0 +1,20 @@
+<div class="tools">
+	<span class="search">
+		<input type="text" placeholder="search" /><a href="#" class="icon-search"></a>
+	</span>
+	<span class="sort">
+		Sort by:
+		<a class="icon-calendar" href="#" sortby="date">
+			<span class="tooltip">Date</span>
+		</a>
+		<a class="icon-tag" href="#" sortby="title">
+			<span class="tooltip">Title</span>
+		</a>
+		<a class="icon-user" href="#" sortby="author">
+			<span class="tooltip">Author</span>
+		</a>
+	</span>
+</div>
+{% for book in books %}
+	{{ book | raw }}
+{% endfor %}
