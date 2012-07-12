@@ -22,8 +22,9 @@
 })(jQuery);
 
 $(function(){
-	var $books = $("section");
-	var $data = $books.clone();
+	var $bookShelf = $("section");
+	var $books = $bookShelf.find("article");
+	var $bookShelfClone = $bookShelf.clone();
 
 	$(".sort a").click(function(){
 		var $this=$(this);
@@ -32,15 +33,32 @@ $(function(){
 		$this.siblings().removeClass("selected");
 		$this.addClass("selected");
 
-		$orderedBooks=$data.find("article").sorted({
+		$orderedBookShelf=$bookShelfClone.find("article").sorted({
 			by: function(v) {
 				return $(v).data(sortby);
 			}
 		});
 
-		$books.quicksand($orderedBooks, {
+		$bookShelf.quicksand($orderedBookShelf, {
 			duration: 800,
 			easing: 'linear'
 		});
+	});
+
+	$(".search input").keyup(function(){
+		var keyword = $(this).val();
+		$books.each(function(i,t){
+			var matchAuthor = (""+$(t).data("author")+"").match(keyword);
+			var matchTitle = (""+$(t).data("title")+"").match(keyword);
+
+			if (matchAuthor || matchTitle)
+				$(t).show(500);
+			else
+				$(t).hide(500);
+		});
+	});
+	$(".search a.clear").click(function(){
+		$(".search input").val("");
+		$(".search a.find").click();
 	});
 });
