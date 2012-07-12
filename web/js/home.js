@@ -40,7 +40,7 @@ $(function(){
 
 		$books.quicksand($orderedBooks, {
 			duration: 800,
-			easing: 'easeInOutQuad'
+			easing: 'linear'
 		});
 	});
 });
