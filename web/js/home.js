@@ -22,11 +22,10 @@
 })(jQuery);
 
 $(function(){
-	var $bookShelf = $("section");
-	var $books = $bookShelf.find("article");
-	var $bookShelfClone = $bookShelf.clone();
-
 	$(".sort a").click(function(){
+		var $bookShelf = $("section");
+		var $bookShelfClone = $bookShelf.clone();
+		
 		var $this=$(this);
 		var sortby=$this.attr("sortby")
 
@@ -44,7 +43,7 @@ $(function(){
 			easing: 'linear'
 		},function(){
 			$(".search input").keyup();
-		});
+		});//*/
 	});
 
 	$(".search input").keyup(function(){
