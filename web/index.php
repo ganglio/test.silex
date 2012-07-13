@@ -5,7 +5,7 @@ $app = new Silex\Application();
 use Symfony\Component\HttpFoundation\Request;
 
 // Debug
-$app['debug'] = true;
+$app['debug'] = TRUE;
 
 /**
  * Before action

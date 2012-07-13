@@ -35,27 +35,45 @@ section {
 
 article {
 	width: 150px;
-	height: 280px;
+	height: 225px;
 	text-align: center;
 	margin:10px;
 	float: left;
-	background-color: rgba(0,0,0,0.75);
 	background-repeat: no-repeat;
 	background-size: 100% auto;
-	padding-top: 230px;
 	color: #7B7980;
+	position: relative;
 	@include box-sizing(border-box);
 	@include border-radius(5px);
-	@include bevel(white);
-	.title {
-		font-size: 15px;
+	.info {
+		background-color: rgba(0,0,0,0.75);
+		z-index: 100;
+		position: absolute;
+		width: 130px;
+		height: 130px;
+		left:0;
+		bottom:0;
+		padding:5px;
+		margin: 40px 10px;
+		display: none;
+		@include box-sizing(border-box);
+		@include border-radius(5px);
+		@include bevel(white);
+		.title {
+			font-size: 15px;
+		}
+		.author {
+			font-size: 20px;
+		}
+		.date {
+			font-size: 10px;
+		}
 	}
-	.author {
-		font-size: 20px;
-	}
-	.date {
-		font-size: 10px;
-	}
+	&:hover {
+		.info {
+			display: block;
+		}
+	};
 }
 
 .tools {
@@ -156,7 +174,7 @@ article {
 					height: 0;
 					border-width:5px;
 					border-style: solid;
-					border-color: #222222 transparent transparent transparent;
+					border-color: #070707 transparent transparent transparent;
 					position: absolute;
 					bottom: -10px;
 					left: 20px;
