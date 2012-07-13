@@ -42,8 +42,8 @@ $(function(){
 			duration: 800,
 			easing: 'linear'
 		},function(){
-			$(".search input").keyup();
-		});//*/
+			$("section").css({"height":""});
+		});
 	});
 
 	$(".search input").keyup(function(){
@@ -60,7 +60,6 @@ $(function(){
 		});
 	});
 	$(".search a.clear").click(function(){
-		$(".search input").val("");
-		$(".search a.find").click();
+		$(".search input").val("").keyup();
 	});
 });
