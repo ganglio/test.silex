@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__.'/../vendor/autoload.php';
 
 $app = new Silex\Application();
@@ -34,5 +35,8 @@ $app->get('/', function () use($app) {
 	return $app["twig"]->render("home.html.twig");
 })->bind("home");
 
+$app->get("/cacca", function() use($app){
+	return "cacca";
+});
 // Run
 $app->run();

@@ -41,8 +41,9 @@ article {
 	float: left;
 	background-repeat: no-repeat;
 	background-size: 100% auto;
-	color: #7B7980;
 	position: relative;
+	background-position: bottom;
+	cursor: pointer;
 	@include box-sizing(border-box);
 	@include border-radius(5px);
 	.info {
@@ -56,6 +57,7 @@ article {
 		padding:5px;
 		margin: 40px 10px;
 		display: none;
+		color: white;
 		@include box-sizing(border-box);
 		@include border-radius(5px);
 		@include bevel(white);

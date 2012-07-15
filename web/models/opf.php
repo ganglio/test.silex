@@ -23,6 +23,13 @@ class OPF {
 			$this->OPF["spine"][]=$spineItem["_a"]["idref"];
 	}
 
+	public function getByID($id) {
+		foreach ($this->OPF["manifest"] as $item)
+			if ($item["id"]==$id)
+				return $item;
+		return NULL;
+	}
+
 	private function xml2ary(&$string) {
 		$parser = xml_parser_create();
 		xml_parser_set_option($parser, XML_OPTION_CASE_FOLDING, 0);
@@ -53,7 +60,7 @@ class OPF {
 			} elseif ($r['type']=='close') {
 				$ary=&$ary['_p'];
 			}
-		}    
+		}
 
 		$this->_del_p($mnary);
 		return $mnary;

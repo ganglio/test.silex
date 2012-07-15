@@ -12,9 +12,9 @@
       var valA = options.by($(a));
       var valB = options.by($(b));
       if (options.reversed) {
-        return (valA < valB) ? 1 : (valA > valB) ? -1 : 0;				
-      } else {		
-        return (valA < valB) ? -1 : (valA > valB) ? 1 : 0;	
+        return (valA < valB) ? 1 : (valA > valB) ? -1 : 0;
+      } else {
+        return (valA < valB) ? -1 : (valA > valB) ? 1 : 0;
       }
     });
     return $(arr);
@@ -25,7 +25,7 @@ $(function(){
 	$(".sort a").click(function(){
 		var $bookShelf = $("section");
 		var $bookShelfClone = $bookShelf.clone();
-		
+
 		var $this=$(this);
 		var sortby=$this.attr("sortby")
 
@@ -50,8 +50,9 @@ $(function(){
 		$books = $("section article");
 		var keyword = $(this).val();
 		$books.each(function(i,t){
-			var matchAuthor = (""+$(t).data("author")+"").match(keyword);
-			var matchTitle = (""+$(t).data("title")+"").match(keyword);
+			var regex=new RegExp(keyword,"gi");
+			var matchAuthor = (""+$(t).data("author")+"").match(regex);
+			var matchTitle = (""+$(t).data("title")+"").match(regex);
 
 			if (matchAuthor || matchTitle)
 				$(t).show(500);
