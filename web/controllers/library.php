@@ -3,8 +3,6 @@
 use Symfony\Component\HttpFoundation\Response;
 require_once(__DIR__."/../models/epub.php");
 
-define("BOOKS_FOLDER",__DIR__."/../books/");
-
 $library=$app["controllers_factory"];
 
 $library->get("/",function () use ($app) {
@@ -29,18 +27,6 @@ $library->get("/",function () use ($app) {
 	return $app["twig"]->render("library.html.twig",array(
 		"books"=>$books
 	));
-});
-
-$library->get("/booksinfo", function() use($app) {
-	header("content-type: text/plain");
-	if ($dh = opendir(BOOKS_FOLDER)) {
-		while ($filename = readdir($dh))
-			if (strpos($filename,"epub")) {
-				$epub = new EPUB(BOOKS_FOLDER.$filename);
-				$cover = "data:image/jpeg;base64,".base64_encode($epub->getCover());
-			}
-	} else
-		return new Response("Unable to open folder",404);
 });
 
 return $library;

@@ -5,6 +5,8 @@ require_once __DIR__.'/../vendor/autoload.php';
 $app = new Silex\Application();
 use Symfony\Component\HttpFoundation\Request;
 
+define("BOOKS_FOLDER",__DIR__."/books/");
+
 // Debug
 $app['debug'] = TRUE;
 
@@ -29,6 +31,7 @@ $app->error(function (\Exception $e, $code) use ($app) {
 
 $app->mount("/header", include 'controllers/header.php');
 $app->mount("/library", include 'controllers/library.php');
+$app->mount("/read", include 'controllers/reader.php');
 
 // Root
 $app->get('/', function () use($app) {

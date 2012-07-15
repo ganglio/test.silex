@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block scripts %}
+	{{ parent() }}
+	<script type="text/javascript" src='/js/turn.min.js'></script>
+	<script type="text/javascript" src='/js/reader.js'></script>
+{% endblock %}
+
+{% block content %}
+<div id='book'>
+	<div class='hard first cover'><img src='{{ cover }}'/></div>
+	<div class='hard second cover'></div>
+
+	{% for num, page in pages %}
+		<div class='page {% if num % 2 == 0 %}even{% else %}odd{% endif %}'>{{ page | raw }}</div>
+	{% endfor %}
+
+	<div class='hard third cover'></div>
+	<div class='hard fourth cover'></div>
+</div>
+{% endblock %}

@@ -63,4 +63,10 @@ $(function(){
 	$(".search a.clear").click(function(){
 		$(".search input").val("").keyup();
 	});
+	$("article").click(function(e){
+		e.preventDefault();
+
+		var id=$(this).data("id");
+		window.location="/read/"+id;
+	});
 });
