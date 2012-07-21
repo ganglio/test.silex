@@ -3,3 +3,4 @@ web/.sass-cache
 web/css
 composer.lock
 web/books
+.DS_Store

@@ -1,0 +1,36 @@
+var bookData = {
+	getComponents: function () {
+		return [
+			{% for component in components %}
+			'{{ component }}'{% if not (loop.last) %},{% endif %}
+
+			{% endfor %}
+		];
+	},
+	getContents: function () {
+		return [
+			{% for content in contents %}
+			{
+				'title':'{{ content.id }}',
+				'src':'{{ content.href }}'
+			}{% if not (loop.last) %},{% endif %}
+
+			{% endfor %}
+		]
+	},
+	getComponent: function (componentId) {
+		return {
+			{% for content in contents %}
+				'{{ content.href }}':'{{ content['media-type'] }}',
+			}{% if not (loop.last) %},{% endif %}
+
+			{% endfor %}
+		}[componentId];
+	},
+	getMetaData: function(key) {
+		return {
+			title: "{{ metadata.title }}",
+			creator: "{{ metadata.author }}"
+		}[key];
+	}
+}
