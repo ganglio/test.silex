@@ -4,17 +4,16 @@ use Symfony\Component\HttpFoundation\Response;
 require_once(__DIR__."/../models/epub.php");
 
 $reader=$app["controllers_factory"];
-$reader->value('chap',0);
 $reader->assert('id','book-id-([0-9a-f]*)');
 
-$reader->get("/{id}/{chap}",function ($id) use ($app) {
+$reader->get("/{id}",function ($id) use ($app) {
 
 	$cover = "";
 	$pages = array();
 
 	$book=getFileFromId($id);
 
-	if ($book) {
+	/*if ($book) {
 		$epub = new EPUB(BOOKS_FOLDER.$book);
 		$cover = "data:image/jpeg;base64,".base64_encode($epub->getCover());
 
@@ -27,7 +26,7 @@ $reader->get("/{id}/{chap}",function ($id) use ($app) {
 				$pages[] = $epub->getContentByName($content["href"]);
 			}
 		}
-	}
+	}*/
 
 	//return print_r($pages,TRUE);
 
@@ -42,17 +41,32 @@ $reader->get("/info/{id}",function ($id) use ($app) {
 	if ($book) {
 		$epub = new EPUB(BOOKS_FOLDER.$book);
 		$OPF = $epub->getOPF()->OPF;
-		$bookData = print_r($OPF,TRUE);
+
+		foreach ($OPF['spine'] as $item) {
+			$item = $epub->getOPF()->getById($item);
+			$bookData['componentsIndex'][] = $item['href'];
+
+			$content = str_replace(array("\n","\r","\t"), '', $epub->getContentByName($item['href']));
+
+			preg_match('/<title>(.*)<\/title>/', $content, $title);
+
+			$bookData['contents'][] = array(
+				'src' => $item['href'],
+				'title' => $title[1],
+			);
+
+			preg_match('/<body[^>]*?>(.*)<\/body>/', $content, $body);
+
+			$bookData['components'][$item['href']] = $body[1];
+		}
+
+		$bookData['metadata'] = $OPF['metadata'];
+
+		$out = json_encode($bookData);
 	}
 
-	$bookData = $app['twig']->render('bookData.js.twig',array(
-		'components' => $OPF['spine'],
-		'contents' => $OPF['manifest'],
-		'metadata' => $OPF['metadata'],
-	));//*/
-
-	return new Response($bookData,200,array(
-		'Content-Type' => 'application/javascript',
+	return new Response($out,200,array(
+		'Content-Type' => 'application/json',
 	));
 });
 
