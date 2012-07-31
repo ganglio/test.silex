@@ -92,7 +92,15 @@ article {
 		.info {
 			display: block;
 		}
-	};
+	}
+	&.downloadable {
+		color: white;
+		@include text-shadow(0 0 2px black);
+		&:before {
+			height: 100%;
+			padding-top: 200px;
+		}
+	}
 }
 
 .tools {
